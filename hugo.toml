@@ -1,0 +1,20 @@
+baseURL = 'https://yourusername.github.io/'
+languageCode = 'en-us'
+title = "Yang Liu | PhD Researcher in HCI"
+
+[params]
+  name = "Yang Liu"
+  bio1 = """I am a first-year PhD student at <a href="https://cs.au.dk/research/section-on-human-centered-computing">Aarhus University</a>, supervised by Associate Professor <a href="https://kenpfeuffer.com/">Ken Pfeuffer</a>."""
+  bio2 = "I make prototypes of extended reality (XR) interaction techniques and applications, conduct user experiments for evaluation, and write academic papers."
+  bio3 = "My design of novel interactions is grounded in affordances, metaphors, and human behaviors. For example, a stick-shaped object affords pointing due to its shape. Through our embodied experience with pens and finger dexterity, that object can also support precise drawing and manipulation. By adopting different grip postures, we use the same object for pointing, drawing, or manipulation, as we have learnt and being doing in everyday practice."
+  photo = "/images/profilesketch.jpg"
+  email = "yang.liu@cs.au.dk"
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+buildFuture = true
+buildDrafts = true

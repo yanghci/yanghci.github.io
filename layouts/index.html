@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Intro Section -->
+        <section class="intro">
+            <div class="intro-text">
+                <h3>{{ .Site.Params.name }}</h3>
+                <p>{{  .Site.Params.bio1 | safeHTML }}</p>
+                <p>{{  .Site.Params.bio2 | safeHTML }}</p>
+                <p>{{  .Site.Params.bio3 | safeHTML }}</p>
+                <p class="contact">
+                    Contact me via <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>.
+                </p>
+            </div>
+            <div class="intro-photo">
+                <img src="{{ .Site.Params.photo }}" alt="{{ .Site.Params.name }}">
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section class="publications">
+            <h2>Publications</h2>
+            <div class="publication-list">
+                {{ range (where .Site.RegularPages "Section" "publications").ByWeight.Reverse }}
+                <div class="publication-item">
+                    {{ if .Params.image }}
+                    <div class="pub-image">
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}">
+                    </div>
+                    {{ end }}
+                    <div class="pub-content">
+                        <h3>{{ .Title }}</h3>
+                        <p class="pub-authors">{{ .Params.authors | safeHTML }}</p>
+                        <p class="pub-venue">{{ .Params.venue | safeHTML }}</p>
+                        <!-- {{ if .Params.links }}
+                        <div class="pub-links">
+                            {{ range .Params.links }}
+                            <a href="{{ .url }}" target="_blank">{{ .name }}</a>
+                            {{ end }}
+                        </div>
+                        {{ end }} -->
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news">
+            <h2>News & Updates</h2>
+            <div class="news-list">
+                {{ range first 5 (where .Site.RegularPages "Section" "news").ByDate.Reverse }}
+                <div class="news-item">
+                    <div class="news-header" onclick="toggleNews(this)">
+                        <span class="news-date">{{ .Date.Format "Jan 2006" }}</span>
+                        <span class="news-title">{{ .Title }}</span>
+                        <span class="news-toggle">+</span>
+                    </div>
+                    <div class="news-content">
+                        {{ .Content }}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+            <button id="load-more" onclick="loadMore()">Load More</button>
+        </section>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
