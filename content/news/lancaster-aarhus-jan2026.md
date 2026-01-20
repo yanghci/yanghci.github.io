@@ -1,5 +1,5 @@
 ---
-title: "Lancaster-Aarhus Meetup Jan. 2026"
+title: "Lancaster-Aarhus Meetup January 2026"
 date: 2026-01-16
 ---
 
