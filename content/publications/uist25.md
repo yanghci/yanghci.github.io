@@ -5,4 +5,5 @@ date: 2025-09-26
 authors: "<u><b>Yang Liu</b></u>, Thorbjørn Mikkelsen, Zehai Liu, Gengchen Tian, Diako Mardanbegi, Qiushi Zhou, Hans Gellersen, and Ken Pfeuffer"
 venue: "The 38th Annual ACM Symposium on User Interface Software and Technology (<b>UIST '25</b>)"
 # image: "/images/SightWarpTeaser.png"
+doi: "https://dl.acm.org/doi/10.1145/3746059.3747653"
 ---

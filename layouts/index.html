@@ -18,6 +18,7 @@
                 <p class="contact">
                     Contact me via <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>.
                 </p>
+                <p>This website is still under construction.</p>
             </div>
             <div class="intro-photo">
                 <img src="{{ .Site.Params.photo }}" alt="{{ .Site.Params.name }}">
@@ -36,7 +37,7 @@
                     </div>
                     {{ end }}
                     <div class="pub-content">
-                        <h3>{{ .Title }}</h3>
+                        <a class="pub-title" href="{{ .Params.doi }}">{{ .Title }}</a>
                         <p class="pub-authors">{{ .Params.authors | safeHTML }}</p>
                         <p class="pub-venue">{{ .Params.venue | safeHTML }}</p>
                         <!-- {{ if .Params.links }}

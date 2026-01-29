@@ -11,16 +11,16 @@ body {
     background-color: #fdfdfd;
 }
 
-a{
+.intro-text a {
     color: rgb(0, 136, 255);
     text-decoration: none;
 }
 
-a:visited {
+.intro-text a:visited {
     color: rgb(0, 136, 255);
 }
 
-a:hover {
+.intro-text a:hover {
     text-decoration: underline;
 }
 
@@ -102,6 +102,18 @@ a:hover {
     height: 160px;
     object-fit: cover;
     border-radius: 4px;
+}
+
+.pub-title {
+    color: black;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.pub-title:hover {
+    color: rgb(0, 136, 255);
 }
 
 .pub-content {
