@@ -58,7 +58,7 @@
         <section class="news">
             <h2>News & Updates</h2>
             <div class="news-list">
-                {{ range first 5 (where .Site.RegularPages "Section" "news").ByDate.Reverse }}
+                {{ range  (where .Site.RegularPages "Section" "news").ByDate.Reverse }}
                 <div class="news-item">
                     <div class="news-header" onclick="toggleNews(this)">
                         <span class="news-date">{{ .Date.Format "Jan 2006" }}</span>
