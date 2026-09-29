@@ -11,17 +11,20 @@ buildDrafts = true
   bio3 = "My design of novel interactions is grounded in affordances, metaphors, and human behaviors. For example, a stick-shaped object affords pointing due to its shape. Through our embodied experience with pens and finger dexterity, that object can also support precise drawing and manipulation. By adopting different grip postures, we use the same object for pointing, drawing, or manipulation, as we have learnt and being doing in everyday practice."
   photo = "/images/profile.jpg"
   email = "yang.liu@cs.au.dk"
-  role = "PhD student in human–computer interaction, Aarhus University"
+  # role = "PhD student in human–computer interaction, Aarhus University"
   # Path or URL to a CV. When set, a "cv" link appears in the top menu.
   # cv = "/cv.pdf"
 
   # Links listed under the email on the home page, in this order.
+  # With `icon` (a file name in layouts/partials/icons/) a link shows as an icon; without it, as text.
   [[params.links]]
     name = "Google Scholar"
     url = "https://scholar.google.com/citations?user=Gjc6o6gAAAAJ&hl=en"
+    icon = "scholar"
   [[params.links]]
     name = "LinkedIn"
     url = "https://www.linkedin.com/in/yang-hci/"
+    icon = "linkedin"
   # [[params.links]]
   #   name = "ORCID"
   #   url = "https://orcid.org/..."

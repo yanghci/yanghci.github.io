@@ -20,6 +20,7 @@
     <div>
         <h3 class="entry-title">{{ .Title }}</h3>
         <div class="prose">{{ .Content }}</div>
+        {{ partial "gallery.html" . }}
     </div>
 </article>
 {{ end }}

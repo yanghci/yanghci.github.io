@@ -1,6 +1,10 @@
 ---
 title: "GEMINI Meetup January 2026"
 date: 2026-01-16
+
+resources:
+  - src: "02.JPG"
+    title: "Lancaster Castle"
 ---
 
 I spent a great week in the beautiful historical town Lancaster during January 12--16. It was my first time being in UK. 

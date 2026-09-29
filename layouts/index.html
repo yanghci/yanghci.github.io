@@ -14,7 +14,12 @@
             <img class="photo" src="{{ .Site.Params.photo }}" alt="{{ .Site.Params.name }}">
             <ul class="contact">
                 <li><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></li>
-                {{ range .Site.Params.links }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }}
+                {{ range where .Site.Params.links "icon" "==" nil }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }}
+                {{ with where .Site.Params.links "icon" "!=" nil }}
+                <li class="icons">
+                    {{ range . }}<a href="{{ .url }}" aria-label="{{ .name }}" title="{{ .name }}">{{ partial (printf "icons/%s.html" .icon) . }}</a>{{ end }}
+                </li>
+                {{ end }}
             </ul>
         </div>
 

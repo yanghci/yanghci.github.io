@@ -1,0 +1,18 @@
+{{/* One scrollable row of the images stored next to a page (page bundle), ordered by file name.
+     A caption appears when the image is given a title under `resources` in front matter. */}}
+{{ with sort (.Resources.ByType "image") "Name" }}
+<div class="gallery">
+    <div class="gallery-track">
+        {{ range . }}
+        {{ $thumb := .Fit "1200x440 q80" }}
+        {{ $full := .Fit "2000x2000 q85" }}
+        <figure>
+            <a href="{{ $full.RelPermalink }}"><img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ if ne .Title .Name }}{{ .Title }}{{ end }}" loading="lazy"></a>
+            {{ if ne .Title .Name }}<figcaption>{{ .Title }}</figcaption>{{ end }}
+        </figure>
+        {{ end }}
+    </div>
+    <button class="gallery-btn prev" type="button" aria-label="Previous images" hidden>‹</button>
+    <button class="gallery-btn next" type="button" aria-label="Next images" hidden>›</button>
+</div>
+{{ end }}

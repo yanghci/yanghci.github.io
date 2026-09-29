@@ -6,6 +6,7 @@
     <p class="meta"><time>{{ .Date.Format "2006 · 01 · 02" }}</time></p>
     <h1 class="page-title">{{ .Title }}</h1>
     <div class="prose">{{ .Content }}</div>
+    {{ partial "gallery.html" . }}
 </article>
 {{ end }}
 <p class="back"><a href="{{ .Parent.RelPermalink }}">← {{ .Parent.Title | lower }}</a></p>

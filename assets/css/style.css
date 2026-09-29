@@ -148,6 +148,28 @@ img {
     margin-bottom: 6px;
 }
 
+.contact .icons {
+    display: flex;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.contact .icons a {
+    display: block;
+    color: var(--ink-soft);
+    border-bottom: 0;
+    line-height: 0;
+}
+
+.contact .icons a:hover {
+    color: var(--accent);
+}
+
+.contact .icons svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* News as margin notes in the right column */
 .side-news {
     margin-top: 34px;
@@ -361,6 +383,70 @@ time {
     color: var(--ink-soft);
 }
 
+/* Image row under a news title: scrolls sideways, snaps per image */
+.gallery {
+    position: relative;
+    margin: 12px 0 4px;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--rule) transparent;
+    padding-bottom: 6px;
+}
+
+.gallery figure {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+.gallery a {
+    display: block;
+    border-bottom: 0;
+}
+
+.gallery img {
+    display: block;
+    height: 220px;
+    width: auto;
+    max-width: none;
+    background: var(--photo-bg);
+}
+
+.gallery figcaption {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink-faint);
+    margin-top: 4px;
+    max-width: 320px;
+}
+
+.gallery-btn {
+    position: absolute;
+    top: 110px;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    font: 22px/1 Georgia, serif;
+    cursor: pointer;
+}
+
+.gallery-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent-rule);
+}
+
+.gallery-btn.prev { left: -12px; }
+.gallery-btn.next { right: -12px; }
+
 .meta {
     margin-bottom: 6px;
 }
@@ -460,6 +546,15 @@ time {
     .notes time {
         display: inline;
         font-size: inherit;
+    }
+
+    .gallery img {
+        height: 160px;
+    }
+
+    /* Touch screens swipe; no buttons needed */
+    .gallery-btn {
+        display: none;
     }
 
     .bio {
