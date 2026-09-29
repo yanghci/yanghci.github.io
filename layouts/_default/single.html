@@ -1,0 +1,12 @@
+{{ define "main" }}
+{{ if eq .Section "publications" }}
+<ol class="refs">{{ partial "pub.html" (dict "page" . "num" "·") }}</ol>
+{{ else }}
+<article>
+    <p class="meta"><time>{{ .Date.Format "2006 · 01 · 02" }}</time></p>
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="prose">{{ .Content }}</div>
+</article>
+{{ end }}
+<p class="back"><a href="{{ .Parent.RelPermalink }}">← {{ .Parent.Title | lower }}</a></p>
+{{ end }}

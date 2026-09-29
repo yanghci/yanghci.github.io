@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="Oc_J49aOKA5rBdyHaHSiMLztdwOKfbjaKwVQk3hFu2A" />
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Params.name }}{{ end }}</title>
+    <meta name="description" content="{{ .Site.Params.bio2 | plainify }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&display=swap">
+    {{ $css := resources.Get "css/style.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body>
+    <div class="page">
+        <nav class="nav">
+            <a href="/"{{ if .IsHome }} aria-current="page"{{ end }}>home</a>
+            {{ $current := .Section }}
+            {{ range slice (slice "publications" "papers") (slice "news" "news") (slice "writing" "writing") }}
+            <a href="/{{ index . 0 }}/"{{ if eq $current (index . 0) }} aria-current="page"{{ end }}>{{ index . 1 }}</a>
+            {{ end }}
+            {{ with .Site.Params.cv }}<a href="{{ . }}">cv</a>{{ end }}
+        </nav>
+
+        <main>
+            {{ block "main" . }}{{ end }}
+        </main>
+
+        <footer class="foot">
+            <p>This website is still under construction.</p>
+            <p>Last revised {{ now.Format "2 January 2006" }}</p>
+        </footer>
+    </div>
+
+    <script>
+        // Open links to other sites in a new tab, including links written inside content.
+        document.querySelectorAll('a[href^="http"]').forEach(function (a) {
+            if (a.hostname !== location.hostname) {
+                a.target = '_blank';
+                a.rel = 'noopener';
+            }
+        });
+    </script>
+</body>
+</html>

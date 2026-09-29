@@ -1,0 +1,474 @@
+/* Paper and Prussian-blue ink; own name in carmine. Night palette follows the system setting. */
+:root {
+    --paper: #fcfbf7;
+    --ink: #1b1d21;
+    --ink-soft: #565b63;
+    --ink-faint: #7d828a;
+    --rule: #d9dbe0;
+    --accent: #1f3f6b;
+    --accent-rule: #b3c0d4;
+    --own: #a1182f;
+    --photo-bg: #e8e9ec;
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --paper: #16181c;
+        --ink: #e2e4e8;
+        --ink-soft: #aab0b9;
+        --ink-faint: #858a93;
+        --rule: #30343b;
+        --accent: #93b1dc;
+        --accent-rule: #3a4c68;
+        --own: #ee8f9c;
+        --photo-bg: #23262c;
+        color-scheme: dark;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--paper);
+}
+
+body {
+    font-family: 'Crimson Pro', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--paper);
+    font-feature-settings: "kern", "liga", "onum";
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-rule);
+}
+
+a:hover {
+    border-bottom-color: var(--accent);
+}
+
+img {
+    max-width: 100%;
+}
+
+.page {
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 40px;
+}
+
+/* Top menu */
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    font-size: 19px;
+    margin-bottom: 44px;
+}
+
+.nav a {
+    color: var(--ink-faint);
+    border-bottom: 1px solid transparent;
+}
+
+.nav a:hover,
+.nav a[aria-current] {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+}
+
+/* Home */
+.home {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    grid-template-areas:
+        "head side"
+        "body side";
+    grid-template-rows: auto 1fr;
+    column-gap: 56px;
+}
+
+.home-head { grid-area: head; }
+.home-side { grid-area: side; }
+.home-body { grid-area: body; }
+
+.name {
+    font-size: 44px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+}
+
+.role {
+    color: var(--ink-soft);
+    margin-top: 4px;
+}
+
+.bio {
+    margin-top: 22px;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.bio p + p {
+    margin-top: 0.6em;
+}
+
+.photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    background: var(--photo-bg);
+    filter: grayscale(0.25);
+}
+
+.contact {
+    list-style: none;
+    margin-top: 16px;
+    font-size: 18px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.contact li:first-child {
+    margin-bottom: 6px;
+}
+
+/* News as margin notes in the right column */
+.side-news {
+    margin-top: 34px;
+}
+
+.notes {
+    list-style: none;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.notes li {
+    margin-bottom: 12px;
+}
+
+.notes time {
+    display: block;
+    font-size: 16px;
+}
+
+.notes a {
+    color: var(--ink-soft);
+    border-bottom-color: transparent;
+}
+
+.notes a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+}
+
+.more {
+    font-size: 17px;
+    font-style: italic;
+}
+
+/* Blocks on the home page */
+.block {
+    margin-top: 34px;
+}
+
+.block-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+    margin-bottom: 14px;
+}
+
+.block-head a {
+    font-variant: normal;
+    letter-spacing: 0;
+    font-size: 17px;
+    font-style: italic;
+}
+
+/* Bibliography */
+.refs {
+    list-style: none;
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 14px;
+    font-size: 19px;
+    line-height: 1.45;
+}
+
+/* Entries share the list's two columns, so labels are only as wide as the longest one */
+.ref {
+    display: contents;
+}
+
+.ref > * {
+    margin-bottom: 20px;
+}
+
+.ref-num {
+    color: var(--accent);
+    font-variant-numeric: lining-nums;
+    white-space: nowrap;
+}
+
+.ref-authors u {
+    text-decoration: none;
+}
+
+/* Own name, marked <u><b>…</b></u> in the authors field */
+.ref-authors b {
+    font-weight: 500;
+    color: var(--own);
+}
+
+/* Title on its own line; authors and venue below in softer ink */
+.ref-title {
+    display: block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1em;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 2px;
+}
+
+.ref-title a {
+    color: inherit;
+    border-bottom: 1px solid transparent;
+}
+
+.ref-title a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent-rule);
+}
+
+.ref-authors {
+    display: block;
+    color: var(--ink-soft);
+}
+
+.ref-venue {
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-right: 8px;
+}
+
+.ref-venue b {
+    font-weight: 400;
+}
+
+.ref-links a {
+    font-variant: small-caps;
+    letter-spacing: 0.06em;
+    margin-right: 10px;
+}
+
+/* Dated lists (news, writing) */
+.dated {
+    list-style: none;
+}
+
+.dated li {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+/* Ledger-style numerals, e.g. 2026 · 04 */
+time {
+    color: var(--accent);
+    font-variant-numeric: oldstyle-nums tabular-nums;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.dated a {
+    color: var(--ink);
+    border-bottom-color: transparent;
+}
+
+.dated a:hover {
+    border-bottom-color: var(--ink);
+}
+
+/* Section and single pages */
+.page-title {
+    font-size: 38px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.15;
+    margin-bottom: 28px;
+}
+
+.year {
+    font-size: 18px;
+    font-weight: 400;
+    font-variant: small-caps;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+    margin: 30px 0 14px;
+}
+
+.entry {
+    display: grid;
+    grid-template-columns: 2.2em minmax(0, 1fr);
+    column-gap: 14px;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.entry-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.prose {
+    max-width: 620px;
+}
+
+.prose p + p {
+    margin-top: 0.8em;
+}
+
+.entry .prose {
+    color: var(--ink-soft);
+}
+
+.meta {
+    margin-bottom: 6px;
+}
+
+.back {
+    margin-top: 40px;
+    font-style: italic;
+}
+
+.empty {
+    color: var(--ink-faint);
+    font-style: italic;
+}
+
+.foot {
+    margin-top: 56px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rule);
+    font-size: 17px;
+    font-style: italic;
+    color: var(--ink-faint);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 20px;
+}
+
+/* Narrow screens: photo moves under the name */
+@media (max-width: 680px) {
+    body {
+        font-size: 19px;
+    }
+
+    .page {
+        width: auto;
+        padding-top: 24px;
+    }
+
+    .refs {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ref-num {
+        margin-bottom: 0;
+    }
+
+    .nav {
+        margin-bottom: 32px;
+    }
+
+    .home {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "head"
+            "id"
+            "body"
+            "news";
+    }
+
+    /* Let the column's two parts take separate places in the flow */
+    .home-side {
+        display: contents;
+    }
+
+    .side-id {
+        grid-area: id;
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .photo {
+        width: 120px;
+        flex-shrink: 0;
+    }
+
+    .contact {
+        margin-top: 0;
+    }
+
+    .side-news {
+        grid-area: news;
+    }
+
+    .notes {
+        font-size: 19px;
+    }
+
+    .notes li {
+        display: grid;
+        grid-template-columns: 84px minmax(0, 1fr);
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .notes time {
+        display: inline;
+        font-size: inherit;
+    }
+
+    .bio {
+        text-align: left;
+    }
+
+    .dated li,
+    .entry {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+}

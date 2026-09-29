@@ -1,80 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="Oc_J49aOKA5rBdyHaHSiMLztdwOKfbjaKwVQk3hFu2A" />
-    <title>{{ .Site.Title }}</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <!-- Intro Section -->
-        <section class="intro">
-            <div class="intro-text">
-                <h3>{{ .Site.Params.name }}</h3>
-                <p>{{  .Site.Params.bio1 | safeHTML }}</p>
-                <p>{{  .Site.Params.bio2 | safeHTML }}</p>
-                <p>{{  .Site.Params.bio3 | safeHTML }}</p>
-                <p class="contact">
-                    Contact me via <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>.
-                </p>
-                <p>This website is still under construction.</p>
-            </div>
-            <div class="intro-photo">
-                <img src="{{ .Site.Params.photo }}" alt="{{ .Site.Params.name }}">
-            </div>
+{{ define "main" }}
+{{ $pubs := (where .Site.RegularPages "Section" "publications").ByWeight.Reverse }}
+{{ $news := (where .Site.RegularPages "Section" "news").ByDate.Reverse }}
+{{ $posts := (where .Site.RegularPages "Section" "writing").ByDate.Reverse }}
+
+<div class="home">
+    <header class="home-head">
+        <h1 class="name">{{ .Site.Params.name }}</h1>
+        {{ with .Site.Params.role }}<p class="role">{{ . }}</p>{{ end }}
+    </header>
+
+    <aside class="home-side">
+        <div class="side-id">
+            <img class="photo" src="{{ .Site.Params.photo }}" alt="{{ .Site.Params.name }}">
+            <ul class="contact">
+                <li><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></li>
+                {{ range .Site.Params.links }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }}
+            </ul>
+        </div>
+
+        <section class="side-news">
+            <h2 class="block-head"><span>news</span></h2>
+            <ul class="notes">
+                {{ range first 5 $news }}
+                <li><time>{{ .Date.Format "2006 · 01" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+            <a class="more" href="/news/">all news →</a>
+        </section>
+    </aside>
+
+    <div class="home-body">
+        <div class="bio">
+            <p>{{ .Site.Params.bio1 | safeHTML }}</p>
+            <p>{{ .Site.Params.bio2 | safeHTML }}</p>
+            <p>{{ .Site.Params.bio3 | safeHTML }}</p>
+        </div>
+
+        <section class="block">
+            <h2 class="block-head"><span>papers</span><a href="/publications/">all papers →</a></h2>
+            <ol class="refs">
+                {{ $n := len $pubs }}
+                {{ range $i, $p := first 5 $pubs }}
+                {{ partial "pub.html" (dict "page" $p "num" (sub $n $i)) }}
+                {{ end }}
+            </ol>
         </section>
 
-        <!-- Publications Section -->
-        <section class="publications">
-            <h2>Publications</h2>
-            <div class="publication-list">
-                {{ range (where .Site.RegularPages "Section" "publications").ByWeight.Reverse }}
-                <div class="publication-item">
-                    {{ if .Params.image }}
-                    <div class="pub-image">
-                        <img src="{{ .Params.image }}" alt="{{ .Title }}">
-                    </div>
-                    {{ end }}
-                    <div class="pub-content">
-                        <a class="pub-title" href="{{ .Params.doi }}">{{ .Title }}</a>
-                        <p class="pub-authors">{{ .Params.authors | safeHTML }}</p>
-                        <p class="pub-venue">{{ .Params.venue | safeHTML }}</p>
-                        <!-- {{ if .Params.links }}
-                        <div class="pub-links">
-                            {{ range .Params.links }}
-                            <a href="{{ .url }}" target="_blank">{{ .name }}</a>
-                            {{ end }}
-                        </div>
-                        {{ end }} -->
-                    </div>
-                </div>
+        {{ with $posts }}
+        <section class="block">
+            <h2 class="block-head"><span>writing</span><a href="/writing/">all posts →</a></h2>
+            <ul class="dated">
+                {{ range first 3 . }}
+                <li><time>{{ .Date.Format "2006 · 01" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
                 {{ end }}
-            </div>
+            </ul>
         </section>
-
-        <!-- News Section -->
-        <section class="news">
-            <h2>News & Updates</h2>
-            <div class="news-list">
-                {{ range  (where .Site.RegularPages "Section" "news").ByDate.Reverse }}
-                <div class="news-item">
-                    <div class="news-header" onclick="toggleNews(this)">
-                        <span class="news-date">{{ .Date.Format "Jan 2006" }}</span>
-                        <span class="news-title">{{ .Title }}</span>
-                        <span class="news-toggle">+</span>
-                    </div>
-                    <div class="news-content">
-                        {{ .Content }}
-                    </div>
-                </div>
-                {{ end }}
-            </div>
-            <button id="load-more" onclick="loadMore()">Load More</button>
-        </section>
+        {{ end }}
     </div>
-
-    <script src="/js/main.js"></script>
-</body>
-</html>
+</div>
+{{ end }}

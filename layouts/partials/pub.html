@@ -1,0 +1,19 @@
+{{/* One publication entry: title, then authors, then venue and links. Expects dict "page" and "num".
+     The label is the bold part of "venue" (e.g. CHI '26); set "short" in front matter to override.
+     That bold "(CHI '26)" is dropped from the venue line, since the label already shows it. */}}
+{{ $p := .page }}
+{{ $label := $p.Params.short }}
+{{ if not $label }}{{ with findRE `<b>.*?</b>` $p.Params.venue 1 }}{{ $label = index . 0 | plainify }}{{ end }}{{ end }}
+{{ $venue := replaceRE `\s*\(<b>.*?</b>\)` "" ($p.Params.venue | default "") }}
+<li class="ref">
+    <span class="ref-num">[{{ $label | default .num }}]</span>
+    <div class="ref-body">
+        {{ $title := replaceRE `^[^\p{L}\p{N}]+` "" $p.Title }}
+        <cite class="ref-title">{{ with $p.Params.doi }}<a href="{{ . }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end }}</cite>
+        <span class="ref-authors">{{ $p.Params.authors | safeHTML }}</span>
+        <span class="ref-venue">{{ $venue | safeHTML }}</span>
+        <span class="ref-links">
+            {{ range $p.Params.links }}<a href="{{ .url }}">{{ .name }}</a>{{ end }}
+        </span>
+    </div>
+</li>

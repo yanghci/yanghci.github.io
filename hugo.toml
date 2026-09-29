@@ -1,20 +1,36 @@
 baseURL = 'https://yanghci.github.io/'
 languageCode = 'en-us'
 title = "Yang Liu, PhD Researcher in HCI @ Aarhus University"
+buildFuture = true
+buildDrafts = true
 
 [params]
   name = "Yang Liu"
   bio1 = """I am a first-year PhD student at <a href="https://cs.au.dk/research/section-on-human-centered-computing">Aarhus University</a>, supervised by Associate Professor <a href="https://kenpfeuffer.com/">Ken Pfeuffer</a>."""
   bio2 = "I make prototypes of extended reality (XR) interaction techniques and applications, conduct user experiments for evaluation, and write academic papers."
   bio3 = "My design of novel interactions is grounded in affordances, metaphors, and human behaviors. For example, a stick-shaped object affords pointing due to its shape. Through our embodied experience with pens and finger dexterity, that object can also support precise drawing and manipulation. By adopting different grip postures, we use the same object for pointing, drawing, or manipulation, as we have learnt and being doing in everyday practice."
-  photo = "/images/profilesketch.jpg"
+  photo = "/images/profile.jpg"
   email = "yang.liu@cs.au.dk"
+  role = "PhD student in human–computer interaction, Aarhus University"
+  # Path or URL to a CV. When set, a "cv" link appears in the top menu.
+  # cv = "/cv.pdf"
+
+  # Links listed under the email on the home page, in this order.
+  [[params.links]]
+    name = "Google Scholar"
+    url = "https://scholar.google.com/citations?user=Gjc6o6gAAAAJ&hl=en"
+  [[params.links]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/yang-hci/"
+  # [[params.links]]
+  #   name = "ORCID"
+  #   url = "https://orcid.org/..."
+  # [[params.links]]
+  #   name = "GitHub"
+  #   url = "https://github.com/yanghci"
 
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-
-buildFuture = true
-buildDrafts = true

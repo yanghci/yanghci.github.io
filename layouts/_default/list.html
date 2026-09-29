@@ -1,0 +1,40 @@
+{{ define "main" }}
+<h1 class="page-title">{{ .Title }}</h1>
+{{ .Content }}
+
+{{ if eq .Section "publications" }}
+{{ $pubs := .Pages.ByWeight.Reverse }}
+{{ $n := len $pubs }}
+<ol class="refs">
+    {{ range $i, $p := $pubs }}
+    {{ partial "pub.html" (dict "page" $p "num" (sub $n $i)) }}
+    {{ end }}
+</ol>
+
+{{ else if eq .Section "news" }}
+{{ range .Pages.GroupByDate "2006" }}
+<h2 class="year">{{ .Key }}</h2>
+{{ range .Pages }}
+<article class="entry" id="{{ .File.ContentBaseName }}">
+    <time>{{ .Date.Format "01" }}</time>
+    <div>
+        <h3 class="entry-title">{{ .Title }}</h3>
+        <div class="prose">{{ .Content }}</div>
+    </div>
+</article>
+{{ end }}
+{{ end }}
+
+{{ else }}
+{{ range .Pages.GroupByDate "2006" }}
+<h2 class="year">{{ .Key }}</h2>
+<ul class="dated">
+    {{ range .Pages }}
+    <li><time>{{ .Date.Format "01 · 02" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+</ul>
+{{ else }}
+<p class="empty">Nothing here yet.</p>
+{{ end }}
+{{ end }}
+{{ end }}
