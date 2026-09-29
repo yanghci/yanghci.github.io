@@ -28,7 +28,7 @@
         </main>
 
         <footer class="foot">
-            <p>This website is still under construction.</p>
+            <!-- <p>This website is still under construction.</p> -->
             <p>Last revised {{ now.Format "2 January 2006" }}</p>
         </footer>
     </div>
@@ -50,14 +50,6 @@
             window.addEventListener('resize', update);
             track.querySelectorAll('img').forEach(function (img) { img.addEventListener('load', update); });
             update();
-        });
-
-        // Open links to other sites in a new tab, including links written inside content.
-        document.querySelectorAll('a[href^="http"]').forEach(function (a) {
-            if (a.hostname !== location.hostname) {
-                a.target = '_blank';
-                a.rel = 'noopener';
-            }
         });
     </script>
 </body>

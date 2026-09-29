@@ -11,4 +11,4 @@ resources:
     title: "AU group photo"
 ---
 
-I spent an overwhelming week at CHI '26, Barcelona. On Wednesday, I presented the paper *StylusPort*. 
+I spent an overwhelming week at CHI '26 in Barcelona, Spain. On Wednesday, I presented our paper *StylusPort*. 

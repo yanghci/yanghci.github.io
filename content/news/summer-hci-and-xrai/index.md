@@ -14,5 +14,8 @@ resources:
 ---
 
 Three inspiring days at <a href="https://hci.au.dk/summer-hci-2026">SummerHCI</a> and the <a href="https://xr-workshop.mathiasl.eu/">AI for XR workshop</a>.
+ 
+Eyal's talk on haptics and XR input devices and Jan's talk on engineering users / perception were super inspiring. 
+
 <br>
 <br>

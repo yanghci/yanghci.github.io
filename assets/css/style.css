@@ -383,6 +383,17 @@ time {
     color: var(--ink-soft);
 }
 
+/* Tighter text in news items, on the news page and on each item's page */
+.entry .prose,
+.news-single .prose {
+    line-height: 1.4;
+}
+
+.entry .prose p + p,
+.news-single .prose p + p {
+    margin-top: 0.35em;
+}
+
 /* Image row under a news title: scrolls sideways, snaps per image */
 .gallery {
     position: relative;

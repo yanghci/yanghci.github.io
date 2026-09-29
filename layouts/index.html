@@ -42,23 +42,25 @@
         </div>
 
         <section class="block">
-            <h2 class="block-head"><span>papers</span><a href="/publications/">all papers →</a></h2>
+            <h2 class="block-head"><span>papers</span></h2>
             <ol class="refs">
                 {{ $n := len $pubs }}
                 {{ range $i, $p := first 5 $pubs }}
                 {{ partial "pub.html" (dict "page" $p "num" (sub $n $i)) }}
                 {{ end }}
             </ol>
+            <a class="more" href="/publications/">all papers →</a>
         </section>
 
         {{ with $posts }}
         <section class="block">
-            <h2 class="block-head"><span>writing</span><a href="/writing/">all posts →</a></h2>
+            <h2 class="block-head"><span>writing</span></h2>
             <ul class="dated">
                 {{ range first 3 . }}
                 <li><time>{{ .Date.Format "2006 · 01" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
                 {{ end }}
             </ul>
+            <a class="more" href="/writing/">all posts →</a>
         </section>
         {{ end }}
     </div>
