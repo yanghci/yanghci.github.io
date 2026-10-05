@@ -9,6 +9,13 @@ buildDrafts = true
   bio1 = """I am a first-year PhD student at <a href="https://cs.au.dk/research/section-on-human-centered-computing">Aarhus University</a>, Denmark, supervised by Associate Professor <a href="https://kenpfeuffer.com/">Ken Pfeuffer</a>. I research human-computer interaction (HCI) in extended reality (XR)."""
   #bio2 = "I make prototypes of extended reality (XR) interaction techniques and applications, conduct user experiments for evaluation, and write academic papers."
   #bio3 = "My design of novel interactions is grounded in affordances, metaphors, and human behaviors. For example, a stick-shaped object affords pointing due to its shape. Through our embodied experience with pens and finger dexterity, that object can also support precise drawing and manipulation. By adopting different grip postures, we use the same object for pointing, drawing, or manipulation, as we have learnt and being doing in everyday practice."
+  # Shown between two rules under the bio on the home page.
+  research = "<i>All interactions are equal, but some interactions are more equal than others.</i>"
+  research1 = "Different interactions offer different benefits, and we prefer certain interactions in contexts where those benefits matter. I explore how to extend these benefits to new spatial contexts where they were not available before. "
+  research2 = "For example, we naturally favor direct input, such as direct touch and grab gestures that we used extensively in the physical world. However, these interactions are limited to peripersonal space. <i>SightWarp</i> extends the benefits of direct input to distant target through eye-hand-based proxy summoning. Conversely, <i>StylusPort</i> brings users closer to distant targets for direct interaction."
+  # We naturally prefer direct input, such as direct touch and grab gestures we perform a lot in physical world; and surface-based tactile input keeps the input precise and low-effort, suitable for prolonged productive or creative work. "
+  # I explore how we can reconfigure spatial relationships in XR to make interaction more direct, precise, and accessible. Rather than treating the spatial relationship between users, inputs, and virtual objects as fixed, I investigate how input and interaction techniques can reshape these relationships—for example, by bringing distant objects closer to the user, bringing the user to a distant location, or bringing spatial interaction onto a physical surface. Across my work, I explore how different spatial configurations can leverage the strengths of different input modalities and interaction spaces."
+  
   photo = "/images/profile.jpg"
   email = "yang.liu@cs.au.dk"
   # role = "PhD student in human–computer interaction, Aarhus University"

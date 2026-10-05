@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="Oc_J49aOKA5rBdyHaHSiMLztdwOKfbjaKwVQk3hFu2A" />
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Params.name }}{{ end }}</title>
-    <meta name="description" content="{{ .Site.Params.bio2 | plainify }}">
+    <meta name="description" content="{{ .Site.Params.research | default .Site.Params.bio1 | plainify }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&display=swap">

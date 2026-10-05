@@ -36,10 +36,20 @@
 
     <div class="home-body">
         <div class="bio">
-            <p>{{ .Site.Params.bio1 | safeHTML }}</p>
-            <p>{{ .Site.Params.bio2 | safeHTML }}</p>
-            <p>{{ .Site.Params.bio3 | safeHTML }}</p>
+            {{ with .Site.Params.bio1 }}<p>{{ . | safeHTML }}</p>{{ end }}
+            {{ with .Site.Params.bio2 }}<p>{{ . | safeHTML }}</p>{{ end }}
+            {{ with .Site.Params.bio3 }}<p>{{ . | safeHTML }}</p>{{ end }}
         </div>
+
+        {{/* research, then research1 … research9, one paragraph each; unset ones are skipped */}}
+        {{ $research := slice }}
+        {{ with .Site.Params.research }}{{ $research = $research | append . }}{{ end }}
+        {{ range seq 9 }}{{ with index site.Params (printf "research%d" .) }}{{ $research = $research | append . }}{{ end }}{{ end }}
+        {{ with $research }}
+        <div class="research">
+            {{ range . }}<p>{{ . | safeHTML }}</p>{{ end }}
+        </div>
+        {{ end }}
 
         <section class="block">
             <h2 class="block-head"><span>papers</span></h2>

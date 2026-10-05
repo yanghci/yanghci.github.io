@@ -127,6 +127,19 @@ img {
     margin-top: 0.6em;
 }
 
+/* Research statement between two rules; the papers heading supplies the lower rule */
+.research {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    text-align: justify;
+    hyphens: auto;
+}
+
+.research p + p {
+    margin-top: 0.6em;
+}
+
 .photo {
     display: block;
     width: 100%;
@@ -568,7 +581,8 @@ time {
         display: none;
     }
 
-    .bio {
+    .bio,
+    .research {
         text-align: left;
     }
 
